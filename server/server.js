@@ -34,10 +34,3 @@ app.listen(process.env.PORT, () => {
 });
 
 
-// usr:
-// lalo
-// pass:
-// CGrYyyRoYqorm5tR
-
-// atlas
-// mongodb+srv://lalo:CGrYyyRoYqorm5tR@cluster0-qhfig.mongodb.net/cafe
