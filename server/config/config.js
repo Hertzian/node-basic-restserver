@@ -17,7 +17,6 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 // 30 dias
 process.env.CADUCIDAD_TOKEN = '30d';
 
-
 // ==========
 // seed de autenticacion
 // ==========

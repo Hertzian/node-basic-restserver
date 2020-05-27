@@ -7,6 +7,7 @@ const app = express();
 
 app.get('/usuario', verificaToken, (req, res) => {
     
+    // paginacion
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
@@ -26,6 +27,13 @@ app.get('/usuario', verificaToken, (req, res) => {
             }
 
             Usuario.countDocuments({estado: true}, (err, conteo) => {
+                if(err){
+                    return res.json({
+                        ok:false,
+                        err
+                });
+                }
+
                 res.json({
                     ok: true,
                     usuarios,
@@ -34,7 +42,7 @@ app.get('/usuario', verificaToken, (req, res) => {
 
             });
 
-        })
+        });
 });
 
 app.post('/usuario', [verificaToken, verificaAdminRole], (req, res) => {
