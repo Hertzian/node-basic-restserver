@@ -64,17 +64,11 @@ app.post('/usuario', [verificaToken, verificaAdminRole], (req, res) => {
             });
         }
 
-        // usuarioDb.password = null;
-
-
         res.json({
             ok: true,
             usuario: usuarioDb
         });
-
     });
-
-
 });
 
 app.put('/usuario/:id', [verificaToken,verificaAdminRole], (req, res) => {
@@ -83,7 +77,6 @@ app.put('/usuario/:id', [verificaToken,verificaAdminRole], (req, res) => {
 
     // delete body.password;
     // delete body.google;
-
     Usuario.findByIdAndUpdate(id, body, {new:true, runValidators:true}, (err, usuarioDb) => {
         if(err){
             return res.status(400).json({
@@ -97,7 +90,6 @@ app.put('/usuario/:id', [verificaToken,verificaAdminRole], (req, res) => {
             usuario: usuarioDb
         });
     });
-
 });
 
 app.delete('/usuario/:id', [verificaToken,verificaAdminRole], (req, res) => {

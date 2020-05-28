@@ -3,7 +3,6 @@ let {verificaToken, verificaAdminRole} = require('../middleware/autenticacion');
 let app = express();
 let Categoria = require('../models/categoria');
 
-
 // Mostrar todas las categorias
 app.get('/categoria', verificaToken,(req, res) => {
     Categoria
@@ -23,7 +22,6 @@ app.get('/categoria', verificaToken,(req, res) => {
                 ok: true,
                 categorias,
             });
-            
         });
 });
 
@@ -40,7 +38,7 @@ app.get('/categoria/:id', verificaToken, (req, res) => {
                     return res.status(500).json({
                         ok:false,
                         err
-                    })
+                    });
                 }
 
                 if(!categoriaDb){
@@ -49,7 +47,7 @@ app.get('/categoria/:id', verificaToken, (req, res) => {
                         err: {
                             message: 'No se encontró'
                         }
-                    })
+                    });
                 }
 
                 res.json({
@@ -168,7 +166,6 @@ app.delete('/categoria/:id', [verificaToken, verificaAdminRole], (req, res) => {
                 message: 'Categoria borrada'
             });
         });
-
 });
 
 module.exports = app;

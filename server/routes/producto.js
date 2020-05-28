@@ -1,6 +1,6 @@
 const express = require('express');
 const {verificaToken} = require('../middleware/autenticacion');
-let app = express();
+const app = express();
 let Producto = require('../models/producto')
 
 // obtener todos los productos
@@ -37,8 +37,7 @@ app.get('/productos', verificaToken,(req,res) => {
                     productos: productos,
                     cuantos: cuantosHay
                 });
-            })
-
+            });
         });
 });
 
@@ -175,8 +174,7 @@ app.put('/producto/:id', verificaToken, (req, res) => {
                     ok:true,
                     producto: productoGuardado
                 });
-            })
-
+            });
         });
 });
 
@@ -215,7 +213,7 @@ app.delete('/producto/:id',verificaToken, (req, res) => {
                 ok:true,
                 producto: productoBorrado,
                 message: 'El producto se ha eliminado'
-            })
+            });
         });
 
     });
